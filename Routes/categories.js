@@ -17,8 +17,8 @@ var options = {
 };
 request(options, function (error, response) {
   if (error) throw new Error(error);
-  //response.json(response.body);
- console.log(response.body);
+  //let x = response
+  console.log(response.body);
 });
 
 
