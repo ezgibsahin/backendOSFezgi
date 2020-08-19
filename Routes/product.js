@@ -5,7 +5,6 @@ const productController = require('../Controller/ProductController');
 
 routes.get('/',(req,res,next) =>{
 
-   
         res.render('Products.ejs');
    
 });
@@ -18,7 +17,15 @@ routes.get('/',(req,res,next) =>{
 // /products/product_search?id=25565189&secretKey=<secretKey>
 // /products/product_search?primary_category_id=womens-clothing-tops&secretKey=<secretKey>​
 
-routes.get('/product_search',productController.searchForProducts);
+//routes.get('/product_search',productController.searchForProducts);
 
+//search products by id
 
+// https://osf-digital-backend-academy.herokuapp.com/api/products/product_search?id=&secretKey=$2a$08$jKg/XbJqmQlVtqlYD8l.x.ZpUSvtQuYqrGT29KBRplVSH8w1dCFTC
+
+routes.get('/product_search/:id', productController.searchForProductsById);
+
+// https://osf-digital-backend-academy.herokuapp.com/api//products/product_search?primary_category_id:=&secretKey=$2a$08$jKg/XbJqmQlVtqlYD8l.x.ZpUSvtQuYqrGT29KBRplVSH8w1dCFTC
+
+routes.get('/product_search/:primary_category_id',productController.searchForProductsByPrimaryCategoryId);
 module.exports = routes;

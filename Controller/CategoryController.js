@@ -5,14 +5,16 @@ function categoryPage(req, res, next){
     return res.status(200).send(returnFromService);
 }
 
-function getAllCategories(req,res,next)
+async function getAllCategories()
 {
-    const returnAllCategories = categoryServices.getAllCategories();
-    return res.status(200).send(returnAllCategories);
+    let parsedCategories = await categoryServices.getAllCategories();
+    return res.status(200).send(parsedCategories);
 }
-function getCategoryById(id)
+async function getCategoryById(id)
 {
-
+    let returnAllCategoriesById = await categoryServices.getCategoryById(id);
+    //JSON.parse(returnAllCategoriesById);
+    return res.status(200).send(category);
 }
 
 function getCategoriesByParentId(id)

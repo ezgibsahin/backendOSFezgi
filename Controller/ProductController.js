@@ -1,12 +1,16 @@
 const productServices = require('../Services/ProductServices');
 
-function searchForProducts()
+function searchForProductsById()
 {
 
 }
 
+function searchForProductsByPrimaryCategoryId()
+{
 
+}
 module.exports = {
 
-    searchForProducts: searchForProducts
+    searchForProductsById: searchForProductsById,
+    searchForProductsByPrimaryCategoryId: searchForProductsByPrimaryCategoryId
 }

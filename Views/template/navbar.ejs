@@ -1,17 +1,41 @@
-<header class="masthead mb-auto">
-    <div class="inner">
-        <h3 class="masthead-brand">EzgiEcommerceNavbar</h3>
-        <nav class="nav nav-masthead justify-content-center">
-            <a id='home' class="nav-link" href="/">HOME</a>
-            <a id='products' class="nav-link" href="/products">PRODUCTS</a>
-            <a id='categories' class="nav-link" href="/categories">CATEGORIES</a>
-            <a id='signin' class="nav-link" href="/signin">SIGN IN</a>
-            <a id='signup' class="nav-link" href="/signup">SIGN UP</a>
-            <a id='wishlist' class="nav-link" href="/wishlist">WISHLIST</a>
-            <a id='cart' class="nav-link" href="/cart">CART</a>
-        </nav>
-    </div>
-    <link href="css/navbar.style.css" rel="stylesheet">
-</header>  
+<nav class="navbar navbar-expand-lg navbar-dark primary-color">
+  <!-- Navbar brand -->
+  <a class="navbar-brand" href="#">Alibazon</a>
 
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav"
+    aria-controls="basicExampleNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <!-- Collapsible content -->
+  <div class="collapse navbar-collapse" id="basicExampleNav">
+    <!-- Links -->
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a id='home' class="nav-link" href="/">HOME
+          <span class="sr-only">(current)</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a id='signin' class="nav-link" href="/signin">SIGN IN</a>
+      </li>
+      <li class="nav-item">
+        <a id='signup' class="nav-link" href="/signup">SIGN UP</a>
+      </li>
+      <li class="nav-item">
+        <a id='wishlist' class="nav-link" href="/wishlist">WISHLIST</a>
+      </li>
+      <li class="nav-item">
+        <a id='cart' class="nav-link" href="/cart">CART</a>
+      </li>
+    </ul>
+    <!-- Links -->
+    <form class="form-inline">
+      <div class="md-form my-0">
+        <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+      </div>
+    </form>
+  </div>
+  <!-- Collapsible content -->
+</nav>
 
+<!---   <link href="../stylesheets/navbar.style.css" rel="stylesheet">    -->
