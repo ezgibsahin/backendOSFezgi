@@ -1,17 +1,24 @@
-<%- include('../Views/template/header')-%>
-<body class="text-center">
-<div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
-<%- include('../Views/template/navbar')-%>
-<main role="main" class="inner cover">
-<h1 class="cover-heading">PRODucts PAGE</h1>
+<html>
 
-</main>
+<body>
+				
+				<tr> <table>
+					<% for(var i=0; i < x.length; i++) { %>
+					   <tr>
+					  <td><%= i %></td>
+					   <td><%= x[i].id %></td>
+					   <td><%= x[i].name %></td>
+					   <td><%= x[i]._id %></td>
+					   </tr>
+					<% } %>
+					</table></tr>
+            </div>
+        </div>
+
+    </div>
+
 <%- include("../Views/template/footer")-%>
-</div>
 </body>
-<script>
-    window.onload = function() {
-        document.getElementById('Home').classList.add('active');
-      };
-</script>
+
+
 </html>

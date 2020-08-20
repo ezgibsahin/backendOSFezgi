@@ -1,15 +1,11 @@
 const express = require('express')
 const routes = express.Router();
 const productController = require('../Controller/ProductController');
+//const { Router } = require('express');
 
+routes.get('/',productController.searchForProducts);
 
-routes.get('/',(req,res,next) =>{
-
-        res.render('Products.ejs');
-   
-});
-
-
+routes.get('/deneme',productController.deneme);
 
 //Send A GET request to /product/product_search to Search for Products
 

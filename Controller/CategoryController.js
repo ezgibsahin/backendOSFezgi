@@ -5,16 +5,32 @@ function categoryPage(req, res, next){
     return res.status(200).send(returnFromService);
 }
 
-async function getAllCategories()
+function getAllCategories(req,res,next)
 {
-    let parsedCategories = await categoryServices.getAllCategories();
-    return res.status(200).send(parsedCategories);
+    let returnAllCategories =  categoryServices.getAllCategories();
+    return res.status(200).send(returnAllCategories);
 }
 async function getCategoryById(id)
 {
-    let returnAllCategoriesById = await categoryServices.getCategoryById(id);
-    //JSON.parse(returnAllCategoriesById);
-    return res.status(200).send(category);
+    let allCategories = await getAllCategories();
+    let parsedCategories = JSON.parse(allCategories);
+    let chosenCategory;
+    for(var i = 0; i < parsedCategories.length; i++) 
+    {
+        var obj = parsedCategories[i];
+        if (obj.id === id)
+        {
+            chosenCategory = obj;
+            break;
+        }
+    }
+    let front = categoryServices.getCategoryById(chosenCategory.id);
+    res.render('Categories.ejs',
+    {
+        choice : front
+    })
+        //console.log(parsedCategories);
+       
 }
 
 function getCategoriesByParentId(id)
