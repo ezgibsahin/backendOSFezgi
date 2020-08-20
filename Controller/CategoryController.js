@@ -1,47 +1,55 @@
 const categoryServices = require('../Services/CategoryServices');
 
-function categoryPage(req, res, next){
+function categoryPage(req, res, next) {
     const returnFromService = categoryServices.categoryPage();
     return res.status(200).send(returnFromService);
 }
 
-function getAllCategories(req,res,next)
-{
-    let returnAllCategories =  categoryServices.getAllCategories();
-    return res.status(200).send(returnAllCategories);
-}
-async function getCategoryById(id)
-{
-    let allCategories = await getAllCategories();
-    let parsedCategories = JSON.parse(allCategories);
-    let chosenCategory;
-    for(var i = 0; i < parsedCategories.length; i++) 
-    {
-        var obj = parsedCategories[i];
-        if (obj.id === id)
-        {
-            chosenCategory = obj;
-            break;
+function getAllCategories(req, res, next) {
+    var request = require('request');
+    var options = {
+        'method': 'GET',
+        'url': 'https://osf-digital-backend-academy.herokuapp.com/api/categories?secretKey=$2a$08$jKg/XbJqmQlVtqlYD8l.x.ZpUSvtQuYqrGT29KBRplVSH8w1dCFTC',
+        'headers': {
         }
-    }
-    let front = categoryServices.getCategoryById(chosenCategory.id);
-    res.render('Categories.ejs',
-    {
-        choice : front
-    })
-        //console.log(parsedCategories);
-       
+    };
+    request(options, function (error, response) {
+        if (error) throw new Error(error);
+      
+        
+        let data = JSON.parse(response.body);
+        //console.log(data);
+        res.render('Categories.ejs',
+            {
+                y: data
+            })
+    });
+
+
+}
+ function getCategoryById(id) {
+    var request = require('request');
+    var options = {
+  'method': 'GET',
+  'url':'https://osf-digital-backend-academy.herokuapp.com/api/categories/'+id+'?secretKey=$2a$08$jKg/XbJqmQlVtqlYD8l.x.ZpUSvtQuYqrGT29KBRplVSH8w1dCFTC',
+  'headers': {
+  }
+};
+request(options, function (error, response) {
+  if (error) throw new Error(error);
+  console.log(response.body);
+});
+
+
 }
 
-function getCategoriesByParentId(id)
-{
+function getCategoriesByParentId(id) {
 
 }
 
 module.exports = {
-    categoryPage : categoryPage,
+    categoryPage: categoryPage,
     getAllCategories: getAllCategories,
     getCategoryById: getCategoryById,
     getCategoriesByParentId: getCategoriesByParentId
-  }
-  
+}

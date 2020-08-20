@@ -1,26 +1,24 @@
-<%- include('../Views/template/header')-%>
 
+<html>
 
-<body class="text-center">
-<div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
-<%- include('../Views/template/navbar')-%>
-<main role="main" class="inner cover">
-<h1 class="cover-heading">CATEGORIES PAGE</h1>
+<body>
+        <table>
+          <% for(var i=0; i < y.length; i++) { %>
+             <tr>
+             <td><%= y[i].id %></td>
+             <td><%= y[i].name %></td>
+             <td><%= y[i]._id %></td>
+             <td><%= y[i].parent_category_id %></td>
+             </tr>
+          <% } %>
+          </table>
+            </div>
+        </div>
 
+    </div>
 
-<a href="/mens"> Mens</a>
-<a href="/womens"> Womens</a>
-</main>
 <%- include("../Views/template/footer")-%>
-</div>
 </body>
-
-
-<script>
-    window.onload = function() {
-        document.getElementById('Home').classList.add('active');
-      };
-</script>
 
 
 </html>

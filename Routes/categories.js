@@ -4,13 +4,11 @@ const categoryController = require('../Controller/CategoryController');
 const baseURL = 'https://osf-digital-backend-academy.herokuapp.com/api/';
 
 //secret key   $2a$08$jKg/XbJqmQlVtqlYD8l.x.ZpUSvtQuYqrGT29KBRplVSH8w1dCFTC 
-routes.get('/',(req,res,next) =>{
-    res.render('Categories.ejs');
-});
+
 
 // GET all categories
 // /categories?secretKey=<secretKey>
-routes.get('/allCategories', categoryController.getAllCategories);
+routes.get('/', categoryController.getAllCategories);
 
 
 //GET category by id
