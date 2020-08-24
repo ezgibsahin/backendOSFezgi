@@ -14,7 +14,8 @@ routes.get('/', categoryController.getAllCategories);
 //GET category by id
 // URL: /categories/<id-of-the-category>
 // /categories/mens-clothing-jackets?secretKey=<secretKey>
-routes.get(':id',categoryController.getCategoryById);
+
+routes.get('/:id', categoryController.getCategorieById);
 
 
 //GET category by parent id

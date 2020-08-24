@@ -5,42 +5,16 @@ function categoryPage(req, res, next) {
     return res.status(200).send(returnFromService);
 }
 
-function getAllCategories(req, res, next) {
-    var request = require('request');
-    var options = {
-        'method': 'GET',
-        'url': 'https://osf-digital-backend-academy.herokuapp.com/api/categories?secretKey=$2a$08$jKg/XbJqmQlVtqlYD8l.x.ZpUSvtQuYqrGT29KBRplVSH8w1dCFTC',
-        'headers': {
-        }
-    };
-    request(options, function (error, response) {
-        if (error) throw new Error(error);
-      
-        
-        let data = JSON.parse(response.body);
-        //console.log(data);
-        res.render('Categories.ejs',
-            {
-                y: data
-            })
-    });
-
-
+async function getCategorieById(req,res,next)
+{
+    const returnCategoriesById = await categoryServices.getCategoryById(req,res);
+    return returnCategoriesById;
 }
- function getCategoryById(id) {
-    var request = require('request');
-    var options = {
-  'method': 'GET',
-  'url':'https://osf-digital-backend-academy.herokuapp.com/api/categories/'+id+'?secretKey=$2a$08$jKg/XbJqmQlVtqlYD8l.x.ZpUSvtQuYqrGT29KBRplVSH8w1dCFTC',
-  'headers': {
-  }
-};
-request(options, function (error, response) {
-  if (error) throw new Error(error);
-  console.log(response.body);
-});
 
-
+async function getAllCategories(req, res, next) {
+   
+    const returnAllCategories = await categoryServices.getAllCategories(req,res);
+    return returnAllCategories;
 }
 
 function getCategoriesByParentId(id) {
@@ -50,6 +24,6 @@ function getCategoriesByParentId(id) {
 module.exports = {
     categoryPage: categoryPage,
     getAllCategories: getAllCategories,
-    getCategoryById: getCategoryById,
+    getCategorieById: getCategorieById,
     getCategoriesByParentId: getCategoriesByParentId
 }

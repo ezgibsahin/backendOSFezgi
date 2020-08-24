@@ -8,9 +8,26 @@ function deneme(error,req,res) {
   
 }
 
-function searchForProducts()
+function searchForProducts(req,res,next)
 {
+  var request = require('request');
+    var options = {
+    'method': 'GET',
+    'url': 'https://osf-digital-backend-academy.herokuapp.com/api/products/product_search?secretKey=$2a$08$jKg/XbJqmQlVtqlYD8l.x.ZpUSvtQuYqrGT29KBRplVSH8w1dCFTC',
+    'headers': {
+    }
+  };
+  request(options, function (error,response) {
+    if (error) throw new Error(error);
+    console.log(response.body);
+   let temp = JSON.parse(response.body);
+   //console.log(temp.length);
  
+   res.render('Products.ejs', 
+   {
+       x: temp
+      })
+  });
 }
 
 function searchForProductsById(id)
