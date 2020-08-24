@@ -4,7 +4,7 @@ const homeController = require('../Controller/HomeController');
 
 
 routes.get('/helloWorld', homeController.helloWorld);
-routes.get('/',homeController.getHomePage);
+routes.get('/',homeController.getCAtegorytoHome);
 
 
 routes.get('/',(req,res,next) =>{

@@ -26,7 +26,9 @@ function getAllCategories(req,res,next)
       }
       res.render('Categories.ejs',
           {
-              y: data
+              y: data,
+              categories: data
+
           })
   });
 
