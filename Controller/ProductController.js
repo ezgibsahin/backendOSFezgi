@@ -1,6 +1,6 @@
 const productServices = require('../Services/ProductServices');
 
-async function searchForProducts(req,res)
+async function searchForProducts(req,res,next)
 {
     const returnFrımService = await productServices.searchForProducts(req,res);
     return returnFrımService;
@@ -17,10 +17,13 @@ function deneme(req,res,next)
     return res.status(200).send(returnFromService);
 }
 
-function searchForProductsById()
+async function searchForProductsById(req,res,next,id)
 {
-
+    const returnPRoductId = await productServices.searchForProductsById(req,res,next,id);
+    return returnPRoductId;
 }
+
+
 
 function searchForProductsByPrimaryCategoryId()
 {

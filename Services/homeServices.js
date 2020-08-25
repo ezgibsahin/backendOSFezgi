@@ -1,10 +1,9 @@
 const categoryServices = require('../Services/CategoryServices');
-
+const categoryController = require('../Controller/CategoryController');
 
 function getCategorytohome(req,res,next)
 {
-    let data = categoryServices.getAllCategories();
-    alert(data.length);
+    let data = categoryController.getAllCategories(req,res);
     res.render('Home.ejs',
     {
         y: data

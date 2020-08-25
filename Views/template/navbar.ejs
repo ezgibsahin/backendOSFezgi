@@ -2,15 +2,15 @@
   <!-- Navbar brand -->
   <a class="navbar-brand" href="#">Alibazon</a>
 
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav"
-    aria-controls="basicExampleNav" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-<
-
   <!-- Collapsible content -->
   <div class="collapse navbar-collapse" id="basicExampleNav">
     <!-- Links -->
+
+    <div class="form-group">
+      <label>Search</label>
+      <input type="search" class="form-control" placeholder="Search">
+   </div>
+  
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
         <a id='home' class="nav-link" href="/">HOME
@@ -18,17 +18,17 @@
         </a>
       </li>
       <li class="nav-item">
-        <button id='mens' onClick="replyClick(this.id)">Mens</button>
+        <a id='mens' class="nav-link" href="categories/mens"">Mens</a>
       </li>
       <li class="nav-item">
-        <button id='womens' onClick="replyClick(this.id)">Womens</button>
+        <a id='mens' class="nav-link" href="categories/womens"">womens</a>
       </li>
       <li class="nav-item">
-        <a id='signin' class="nav-link" href="/signin">SIGN IN</a>
+        <a id='signin' class="nav-link" href="auth/signin">SIGN IN</a>
       </li>
     
       <li class="nav-item">
-        <a id='signup' class="nav-link" href="/signup">SIGN UP</a>
+        <a id='signup' class="nav-link" href="auth/signup">SIGN UP</a>
       </li>
       <li class="nav-item">
         <a id='wishlist' class="nav-link" href="/wishlist">WISHLIST</a>
@@ -39,9 +39,9 @@
     </ul>
     <!-- Links -->
     <form class="form-inline">
-      <div class="md-form my-0">
-        <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-      </div>
+
+
+     
     </form>
     <script type="text/javascript">
           function replyClick(clickedId)

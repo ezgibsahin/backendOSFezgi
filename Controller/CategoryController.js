@@ -1,13 +1,9 @@
 const categoryServices = require('../Services/CategoryServices');
 
-function categoryPage(req, res, next) {
-    const returnFromService = categoryServices.categoryPage();
-    return res.status(200).send(returnFromService);
-}
 
-async function getCategorieById(req,res,next)
+async function getCategorieById(req,res,next,id)
 {
-    const returnCategoriesById = await categoryServices.getCategoryById(req,res);
+    const returnCategoriesById = await categoryServices.getCategoryById(req,res,next,id);
     return returnCategoriesById;
 }
 
@@ -17,13 +13,24 @@ async function getAllCategories(req, res, next) {
     return returnAllCategories;
 }
 
-function getCategoriesByParentId(id) {
-
+async function getMainCats(req, res, next,id) {
+   
+    const mainCat = await categoryServices.getmains(req,res);
+    return mainCat;
 }
 
+async function getCategoriesByParentId(req, res, next,id) {
+   
+    const mainCat = await categoryServices.getCategoryById(req,res);
+    return mainCat;
+}
+
+
+
 module.exports = {
-    categoryPage: categoryPage,
+    getMainCats :getMainCats,
     getAllCategories: getAllCategories,
     getCategorieById: getCategorieById,
     getCategoriesByParentId: getCategoriesByParentId
+ 
 }

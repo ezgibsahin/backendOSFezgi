@@ -1,16 +1,21 @@
 <html>
 
 <body>
-				<table>
-					<% for(var i=0; i < x.length; i++) { %>
-					   <tr>
-						<td><%= i %></td>
-						 <td><%= x[i].id %></td>
-						 <td><%= x[i].name %></td>
-						 <td><%= x[i]._id %></td>
-					   </tr>
-					<% } %>
-					</table>
+	<table>
+		<% for(var i=0; i < x.length; i++) { %>
+		   <tr>
+
+			<li class="nav-item">
+				<a id=<%= x[i].id %> class="nav-link" href="/products<%= x[i].parent_category_id %>/<%= x[i].id %>"><%= x[i].name %></a>
+			  </li>
+
+			 <td><%= x[i].id %></td>
+			 <td><%= x[i].name %></td>
+			 <td><%= x[i]._id %></td>
+			 <td><%= x[i].parent_category_id %></td>
+		   </tr>
+		<% } %>
+		</table>
             </div>
         </div>
 

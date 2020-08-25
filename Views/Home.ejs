@@ -1,4 +1,4 @@
-<%- include('../Views/template/header')-%>
+
 <body class="text-center">
 <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
 <%- include('../Views/template/navbar')-%>
@@ -7,25 +7,13 @@
 
 
 
-<table>
-  <% for(var i=0; i < y.length; i++) { %>
-     <tr>
-
-    <li class="nav-item">
-      <a id=<%= y[i].id %> class="nav-link" href="/categories/<%= y[i].parent_category_id %>/<%= y[i].id %>"><%= y[i].name %></a>
-      </li>
-
-     <td><%= y[i].id %></td>
-     <td><%= y[i].name %></td>
-     <td><%= y[i]._id %></td>
-     <td><%= y[i].parent_category_id %></td>
-     </tr>
-  <% } %>
-  </table>
 
 </main>
 <%- include("../Views/template/footer")-%>
 </div>
+
+
+
 </body>
 <script>
     window.onload = function() {
