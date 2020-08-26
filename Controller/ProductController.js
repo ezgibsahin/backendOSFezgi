@@ -2,36 +2,24 @@ const productServices = require('../Services/ProductServices');
 
 async function searchForProducts(req,res,next)
 {
-    const returnFrımService = await productServices.searchForProducts(req,res);
-    return returnFrımService;
-}
-
-
-
-function deneme(req,res,next)
-{
-    const returnFromService = productServices.deneme();
-    res.render('Products.ejs', {
-        deneme : returnFromService
-    })
-    return res.status(200).send(returnFromService);
+    const returnFromService = await productServices.searchForProducts(req,res);
+    return returnFromService;
 }
 
 async function searchForProductsById(req,res,next,id)
 {
-    const returnPRoductId = await productServices.searchForProductsById(req,res,next,id);
-    return returnPRoductId;
+    const returnSearchById = await productServices.searchForProductsById(req,res,next,id);
+    return returnSearchById;
 }
 
-
-
-function searchForProductsByPrimaryCategoryId()
+async function searchForProductsByPrimaryCategoryId(req,res,next,id)
 {
-
+    const returnSearchByPrimary = await productServices.searchForProductsByPrimaryCategoryId(req,res,next,id);
+    return returnSearchByPrimary;
 }
+
 module.exports = {
     searchForProducts: searchForProducts,
     searchForProductsById: searchForProductsById,
-    searchForProductsByPrimaryCategoryId: searchForProductsByPrimaryCategoryId,
-    deneme: deneme
+    searchForProductsByPrimaryCategoryId: searchForProductsByPrimaryCategoryId
 }

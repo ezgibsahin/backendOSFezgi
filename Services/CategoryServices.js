@@ -1,6 +1,5 @@
 const { response } = require('express');
 
-
 function getAllCategories(req,res,next)
 {
   var request = require('request');
@@ -24,7 +23,7 @@ function getAllCategories(req,res,next)
 
 }
 
-function getmains(req,res,next,id)
+function getCategoryById(req,res,next,id)
 {
   var inputId = req.params.id;
   console.log(inputId);
@@ -38,21 +37,17 @@ function getmains(req,res,next,id)
   request(options, function (error, response) {
       if (error) throw new Error(error); 
       let dataAllCategories = JSON.parse(response.body);
-      console.log(dataAllCategories)
+      //console.log(dataAllCategories)
       let mainCategoryArr = [];
-      for (let index = 0; index < dataAllCategories.length; index++) 
+      for (let i = 0; i < dataAllCategories.length; i++) 
       {
-        //console.log(dataAllCategories[index].parent_category_id);
+        //console.log(dataAllCategories[i].parent_category_id);
         //console.log(inputId);
-          if (dataAllCategories[index].parent_category_id == inputId )
+          if (dataAllCategories[i].parent_category_id== inputId )
           {
-              
-              mainCategoryArr.push(dataAllCategories[index]);
-          }
-          
+              mainCategoryArr.push(dataAllCategories[i]);
+          }    
       }
-           
-     // console.log(dataAllCategories);  
       res.render('Categories.ejs',
           {
               y: mainCategoryArr
@@ -63,14 +58,14 @@ function getmains(req,res,next,id)
 
 }
 
-async function getCategoryById(req,res,next,id)
+async function getCategoryByParentId(req,res,next,id)
 {
-    var inputId = req.params.id;
-    console.log(inputId);
+    var inputParentId = req.params.id;
+    console.log(inputParentId);
     var request = require('request');
     var options = {
     'method': 'GET',
-    'url':'https://osf-digital-backend-academy.herokuapp.com/api/categories/parent/'+inputId+'?secretKey=$2a$08$jKg/XbJqmQlVtqlYD8l.x.ZpUSvtQuYqrGT29KBRplVSH8w1dCFTC',
+    'url':'https://osf-digital-backend-academy.herokuapp.com/api/categories/parent/'+inputParentId+'?secretKey=$2a$08$jKg/XbJqmQlVtqlYD8l.x.ZpUSvtQuYqrGT29KBRplVSH8w1dCFTC',
     'headers': {
     }
 };
@@ -78,37 +73,26 @@ async function getCategoryById(req,res,next,id)
 {
     console.log('denemeamk')
     if (error) throw new Error(error);
-
-
-    let dataCategoryById = JSON.parse(response.body);
-    
-    //console.log(response.body)
-     
-      let element =[] ;
-      for (let index = 0; index < dataCategoryById.length; index++) 
+    let dataCategoryByParentId = JSON.parse(response.body);
+    /*
+    let element =[] ;
+      for (let i = 0; i < dataCategoryByParentId.length; i++) 
       {
-          if (dataCategoryById[index].parent_category_id == inputId) 
+          if (dataCategoryByParentId[i].parent_category_id == inputParentId) 
           {
-              element.push(dataCategoryById[index]);
+              element.push(dataCategoryByParentId[i]);
           }
           
-      }
-      
+      }    */
       res.render('Categories.ejs',{
-          y: dataCategoryById
+          y: dataCategoryByParentId
       })
-  
 })
+}
 
-}
-function getCategoriesByParentId()
-{
-/*https://osf-digital-backend-academy.herokuapp.com/api/categories/parent?parent_category_id=&secretKey=$2a$08$jKg/XbJqmQlVtqlYD8l.x.ZpUSvtQuYqrGT29KBRplVSH8w1dCFTC*/
-}
 module.exports = {
     getAllCategories: getAllCategories,
-    getCategoryById: getCategoryById,
-    getCategoriesByParentId: getCategoriesByParentId,
-    getmains: getmains
+    getCategoryByParentId: getCategoryByParentId,
+    getCategoryById: getCategoryById
 
 }
