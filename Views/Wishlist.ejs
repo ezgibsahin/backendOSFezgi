@@ -8,22 +8,6 @@
 </main>
 <%- include("../Views/template/footer")-%>
 </div>
-
-table>
-  <% for(var i=0; i < buttons.length; i++) { %>
-     <tr>
-
-    <li class="nav-item">
-      <a id=<%= buttons[i].id %> class="nav-link" href="/categories/<%= buttons[i].parent_category_id %>/<%= buttons[i].id %>"><%= buttons[i].name %></a>
-      </li>
-
-     <td><%= buttons[i].id %></td>
-     <td><%= buttons[i].name %></td>
-     <td><%= buttons[i]._id %></td>
-     <td><%= buttons[i].parent_category_id %></td>
-     </tr>
-  <% } %>
-  </table>
 </body>
 <script>
     window.onload = function() {

@@ -2,8 +2,12 @@ const { response } = require('express');
 
 
 /// token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmNDQwNjgwMmE1OWI4MDAyNDAwZWI1NSIsImlhdCI6MTU5ODI5MzYzMiwiZXhwIjoxNTk4MzgwMDMyfQ.i2tEDwXLs5pwygX3SXsckBqoUKHwlndqd1nt7MgJmsQ ccc ccc@
-function signup(req,res,next,name,email,password)
+function signup(req,res,next)
 {
+  var inputName = req.params.name;
+  var inputEmail = req.params.email;
+  var inputPassword = req.params.password;
+  
     var request = require('request');
     var options = {
       'method': 'POST',
@@ -11,12 +15,14 @@ function signup(req,res,next,name,email,password)
       'headers': {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({"secretKey":"$2a$08$jKg/XbJqmQlVtqlYD8l.x.ZpUSvtQuYqrGT29KBRplVSH8w1dCFTC",name,email,password})
+      body: JSON.stringify({"secretKey":"$2a$08$jKg/XbJqmQlVtqlYD8l.x.ZpUSvtQuYqrGT29KBRplVSH8w1dCFTC",inputName,inputEmail,inputPassword})
     
     };
     request(options, function (error, response) {
       if (error) throw new Error(error);
       console.log(response.body);
+
+      res.render('Signup.ejs');
     });
     
 }
@@ -24,6 +30,10 @@ function signup(req,res,next,name,email,password)
 
 function signin(req,res,next)
 {
+  
+  var inputEmail = req.params.email;
+  var inputPassword = req.params.password;
+  
     var request = require('request');
     var options = {
   'method': 'POST',
@@ -31,17 +41,27 @@ function signin(req,res,next)
   'headers': {
     'Content-Type': 'application/json'
   },
-  body: JSON.stringify({"secretKey":"$2a$08$jKg/XbJqmQlVtqlYD8l.x.ZpUSvtQuYqrGT29KBRplVSH8w1dCFTC","email":"bbb@gmail.com","password":"123456"})
+  body: JSON.stringify({"secretKey":"$2a$08$jKg/XbJqmQlVtqlYD8l.x.ZpUSvtQuYqrGT29KBRplVSH8w1dCFTC",inputEmail,inputPassword})
 
 };
 request(options, function (error, response) {
   if (error) throw new Error(error);
   console.log(response.body);
+  res.render('Signin.ejs');
 });
 
 }
 
+
+
+function auth(req,res,next)
+{
+  
+  return 'You are in auth page';
+}
 module.exports = {
 
-  signup : signup
+  signup : signup,
+  signin : signin,
+  auth:auth
 }
