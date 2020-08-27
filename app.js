@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 var path = require('path');
 require('./Routes')(app);
+const bodyParser = require('body-parser');
 const Sentry = require('@sentry/node');
 // or use es6 import statements
 // import * as Sentry from '@sentry/node';
@@ -17,5 +18,6 @@ app.listen(port, () =>{
 app.use(express.static(path.join(__dirname, 'public')));
 app.set('view engine','ejs');
 
-
+app.use(express.json()); 
+app.use(express.urlencoded({extended: false }))
 module.exports = app;

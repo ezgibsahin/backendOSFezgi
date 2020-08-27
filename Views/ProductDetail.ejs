@@ -1,21 +1,23 @@
 <html>
 
+  <%- include('../Views/template/header')-%>
+  <%- include('../Views/template/navbar')-%>
 <body>
-	<table>
-		<% for(var i=0; i < x.length; i++) { %>
-		   <tr>
+  <table>
+    <% for(var i=0; i < x.length; i++) { %>
+       <tr>
 
-			<li class="nav-item">
-				<a id=<%= x[i].id %> class="nav-link" href="/products/product_search<%= x[i].parent_category_id %>/<%= x[i].id %>"><%= x[i].name %></a>
-			  </li>
+      <li class="nav-item">
+        <a id=<%= x[i].id %> class="nav-link" href="/products/product_search<%= x[i].parent_category_id %>/<%= x[i].id %>"><%= x[i].name %></a>
+        </li>
 
-			 <td><%= x[i].id %></td>
-			 <td><%= x[i].name %></td>
-			 <td><%= x[i]._id %></td>
-			 <td><%= x[i].parent_category_id %></td>
-		   </tr>
-		<% } %>
-		</table>
+       <td><%= x[i].id %></td>
+       <td><%= x[i].name %></td>
+       <td><%= x[i]._id %></td>
+       <td><%= x[i].primary_category_id %></td>
+       </tr>
+    <% } %>
+    </table>
             </div>
         </div>
 

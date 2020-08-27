@@ -11,17 +11,20 @@
       <div class="main">
          <div class="col-md-6 col-sm-12">
             <div class="login-form">
-               <form method="POST">
+               <form method="POST" action="/auth/signin"> >
                      
-                  <div class="form-group">
-                    <label>Email</label>
-                    <input type="email" class="form-control" placeholder="Email">
-                 </div>
-                  <div class="form-group">
-                     <label>Password</label>
-                     <input type="password" class="form-control" placeholder="Password">
-                  </div>
-                  <button type="submit" class="btn btn-black">Sign In</button>
+                  
+                 <div class="form-group">
+                <label>Email</label>
+      <input type="text" name="email" class="form-control" placeholder="Email">
+  </div>
+  
+  <div class="form-group">
+      <label>Password</label>
+      <input type="password" name="password" class="form-control"  placeholder="Password">
+  </div>
+  
+  <button type="submit" class="btn btn-default">LOGIN</button>
                </form>
             </div>
          </div>

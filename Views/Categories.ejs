@@ -1,27 +1,27 @@
-
 <html>
-	<%- include('../Views/template/header')-%>
-	<%- include('../Views/template/navbar')-%>
-	<head>
-		<link href=../stylesheets/product-list.style.css rel=stylesheet type=text/css>
-	</head>
+  <%- include('../Views/template/header')-%>
+  <%- include('../Views/template/navbar')-%>
+  <head>
+    <link href=../stylesheets/product-list.style.css rel=stylesheet type=text/css>
+  </head>
 <body>
-				<table>
-					<% for(var i=0; i < y.length; i++) { %>
-					   <tr>
+        <table>
+          <% for(var i=0; i < y.length; i++) { %>
+             <tr>
 
-						<li class="nav-item">
-							<a id=<%= y[i].id %> class="nav-link" href="/categories/<%= y[i].id %>"><%= y[i].name %></a>
-						  </li>
+            <li class="nav-item">
+              <a id=<%= y[i].id %> class="nav-link" href="/categories/<%= y[i].id %>">         <%= y[i].name %></a>
+              </li>
 
-						 <td><%= y[i].id %></td>
-						 <td><%= y[i].name %></td>
-						 <td><%= y[i]._id %></td>
-						 <td><%= y[i].parent_category_id %></td>
-					   </tr>
-					<% } %>
-					</table>
-            </div>
+             <td><%= y[i].id %></td>
+             <td><%= y[i].name %></td>
+             <td><%= y[i]._id %></td>
+             <td><%= y[i].parent_category_id %></td>
+             </tr>
+          <% } %>
+          </table>
+      </div>
+  
         </div>
 
     </div>

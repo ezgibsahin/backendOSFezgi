@@ -11,19 +11,41 @@ function searchForProducts(req,res,next)
   };
   request(options, function (error,response) {
     if (error) throw new Error(error);
-   // console.log(response.body);
    let temp = JSON.parse(response.body);
-   //console.log(temp.length);
- 
    res.render('Products.ejs', 
    {
-     
        x: temp
       })
   });
 }
+function searchForProductsByPrimaryCategoryId(req,res,id)
+{
+  console.log(id);
+  var request = require('request');
+    var options = {
+    'method': 'GET',
+    'url': 'https://osf-digital-backend-academy.herokuapp.com/api/products/product_search?primary_category_id='+id+'&secretKey=$2a$08$jKg/XbJqmQlVtqlYD8l.x.ZpUSvtQuYqrGT29KBRplVSH8w1dCFTC',
+    'headers': {
+    }
+  };
+  request(options, function (error,response) {
+    if (error) throw new Error(error);
+    
+   let temp = JSON.parse(response.body);
+   //console.log(temp.length);
+   let products = [];
 
-function searchForProductsById(req,res,next,id)
+   for (let index = 0; index < temp.length; index++) 
+   {
+           products.push(temp[index]);
+   }
+   res.render('Products.ejs', 
+   {
+       x: products
+      })
+  });
+}
+function searchForProductsById(req,res,id)
 {
   var inputId = req.params.id;
   console.log(inputId);
@@ -36,10 +58,7 @@ function searchForProductsById(req,res,next,id)
 };
 request(options, function (error, response) {
   if (error) throw new Error(error);
-  //console.log(response.body);
   let data = JSON.parse(response.body);
-
-  
   res.render('ProductDetail.ejs',
   {
       x:data
@@ -47,7 +66,8 @@ request(options, function (error, response) {
 });
 }
 
-function searchForProductsByPrimaryCategoryId(req,res,next,id)
+/*
+function searchForProductsByPrimaryCategoryId(req,res,id)
 {
   var inputPrimaryId = req.params.id;
   var request = require('request');
@@ -72,13 +92,11 @@ function searchForProductsByPrimaryCategoryId(req,res,next,id)
           
       }    
       res.render('Categories.ejs',{
-          y: productsPrimaryId
+          y: primary
       })
 })
 
-}
-
-
+}*/
 
 module.exports = {
     searchForProducts: searchForProducts,

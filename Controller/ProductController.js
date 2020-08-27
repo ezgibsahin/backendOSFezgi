@@ -1,23 +1,22 @@
 const productServices = require('../Services/ProductServices');
 
-async function searchForProducts(req,res,next)
+async function searchForProducts(req,res)
 {
     const returnFromService = await productServices.searchForProducts(req,res);
     return returnFromService;
 }
 
-async function searchForProductsById(req,res,next,id)
+async function searchForProductsById(req,res,id)
 {
-    const returnSearchById = await productServices.searchForProductsById(req,res,next,id);
+    const returnSearchById = await productServices.searchForProductsById(req,res,id);
     return returnSearchById;
 }
 
-async function searchForProductsByPrimaryCategoryId(req,res,next,id)
+async function searchForProductsByPrimaryCategoryId(req,res,id)
 {
-    const returnSearchByPrimary = await productServices.searchForProductsByPrimaryCategoryId(req,res,next,id);
-    return returnSearchByPrimary;
+    let returnPRoductId = await productServices.searchForProductsByPrimaryCategoryId(req,res,id);
+    return returnPRoductId;
 }
-
 module.exports = {
     searchForProducts: searchForProducts,
     searchForProductsById: searchForProductsById,
