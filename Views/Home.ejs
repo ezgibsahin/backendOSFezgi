@@ -1,6 +1,5 @@
 <html>    
-  <head>
-    
+  <head> 
     <link rel=stylesheet type=text/css href=../css/bootstrap.min.css.css>
     <link rel=stylesheet type=text/css href=../stylesheets/navbar.style.css>
 <%- include('../Views/template/header.ejs')-%>
@@ -8,10 +7,10 @@
 
     <% for(var i=0; i < 15; i++) { %>
       
-  <div class="col-xs-9 col-md-4">
-       <div class="col-xs-6">
+  <div class="col-xs-7 col-md-4">
+       <div class="col-xs-4">
         <li class="nav-item">
-          <a id=<%= x[i].id %> class="nav-link" href=     "/products/<%= x[i].primary_category_id %>/<%= x[i].id %>">          <%= x[i].name %></a>
+          <a id=<%= x[i].id %> class="nav-link" href=     "/products/<%= x[i].primary_category_id %>/<%= x[i].id %>"><%= x[i].name %></a>
           </li>
             <img src=" /images/<%=x[i].image_groups[0].images[0].link%>">
           
@@ -32,17 +31,11 @@
               </div>
     <% } %>
 
-
-
-
-
 <script>
     window.onload = function() {
         document.getElementById('Home').classList.add('active');
       };
 </script>
-
-
 <footer >
   <%- include("../Views/template/footer")-%>
 </footer>
