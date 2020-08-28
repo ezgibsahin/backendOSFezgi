@@ -1,24 +1,49 @@
+<html>    
+  <head>
+    
+    <link rel=stylesheet type=text/css href=../css/bootstrap.min.css.css>
+    <link rel=stylesheet type=text/css href=../stylesheets/navbar.style.css>
+<%- include('../Views/template/header.ejs')-%>
+</head>
 
-<body class="text-center">
-<div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
-<%- include('../Views/template/navbar')-%>
-<main role="main" class="inner cover">
-<h1 class="cover-heading">EZGIECOMMERCE</h1>
+    <% for(var i=0; i < 15; i++) { %>
+      
+  <div class="col-xs-9 col-md-4">
+       <div class="col-xs-6">
+        <li class="nav-item">
+          <a id=<%= x[i].id %> class="nav-link" href=     "/products/<%= x[i].primary_category_id %>/<%= x[i].id %>">          <%= x[i].name %></a>
+          </li>
+            <img src=" /images/<%=x[i].image_groups[0].images[0].link%>">
+          
+                <h3><%=x[i].name%></h3>
+                <li><%-x[i].short_description%></li>
+                <span>
+                    <p>Price: <%=x[i].currency%> <%=x[0].price%></p>
+
+                    <span class='buy-now' style="font-size:16px" ><a>Buy now</a></span>
+                    <a > | </a>
+                    <span class='add-cart' style="font-size:16px"><a>Add to Cart</a></span>
+                    <a > | </a>
+                    <span class='add-wishlist' style="font-size:16px"><a>Wishlist</a></span>
+                    
+                    <p></p>
+                </span>
+              </div>
+              </div>
+    <% } %>
 
 
 
 
-</main>
-<%- include("../Views/template/footer")-%>
-</div>
 
-
-
-</body>
 <script>
     window.onload = function() {
         document.getElementById('Home').classList.add('active');
       };
 </script>
-</html>
 
+
+<footer >
+  <%- include("../Views/template/footer")-%>
+</footer>
+</html>

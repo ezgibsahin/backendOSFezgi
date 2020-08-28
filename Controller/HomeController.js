@@ -7,14 +7,16 @@ function getHomePage(req, res) {
     res.render('Home.ejs');
 }
 
-
-async function getCAtegorytoHome(req,res,next)
+async function searchForProducts(req,res)
 {
-    const returnCategoriesById = await homeServices.getCategorytohome(req,res);
-    return returnCategoriesById;
+    const returnFrımService = await homeServices.searchForProducts(req,res);
+    return returnFrımService;
 }
+
+
+
 module.exports = {
     getHomePage: getHomePage,
-    getCAtegorytoHome : getCAtegorytoHome
+    searchForProducts:searchForProducts
   }
   

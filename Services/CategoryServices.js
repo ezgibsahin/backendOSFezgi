@@ -1,6 +1,7 @@
 const { response } = require('express');
 const ProductServices = require('./ProductServices');
 const productController = require('../Controller/ProductController');
+
 function getAllCategories(req,res,next)
 {
   var request = require('request');

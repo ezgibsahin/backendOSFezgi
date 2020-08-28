@@ -1,27 +1,47 @@
 <html>
-  <%- include('../Views/template/header')-%>
-  <%- include('../Views/template/navbar')-%>
-
+  <head>
+    
+    <link rel=stylesheet type=text/css href=../css/bootstrap.min.css.css>
+    <link rel=stylesheet type=text/css href=../stylesheets/navbar.style.css>
+  <%- include('../Views/template/header.ejs')-%>
+  </head>
+  
 <body>
-  <table>
     <% for(var i=0; i < x.length; i++) { %>
-       <tr>
-
+      
+  <div class="col-xs-9 col-md-4">
+  <div class="col-xs-6">
+       
       <li class="nav-item">
         <a id=<%= x[i].id %> class="nav-link" href=     "/products/<%= x[i].primary_category_id %>/<%= x[i].id %>">          <%= x[i].name %></a>
         </li>
+      
+    
 
-       <td><%= x[i].id %></td>
-       <td><%= x[i].name %></td>
-       <td><%= x[i]._id %></td>
-       <td><%= x[i].parent_category_id %></td>
-       </tr>
+    <section class=product>
+            <img src=" /images/<%=x[i].image_groups[0].images[0].link%>">
+       
+                <h3><%=x[i].name%></h3>
+                <p><%-x[i].long_description%></p>
+                <span>
+                    <p>Price: <%=x[i].currency%> <%=x[0].price%></p>
+          <span class='buy-now' style="font-size:16px" ><a>Buy now</a></span>
+                    <a > | </a>
+                    <span class='add-cart' style="font-size:16px"><a>Add to Cart</a></span>
+                    <a > | </a>
+                    <span class='add-wishlist' style="font-size:16px"><a>Wishlist</a></span>
+                    
+                    <p></p>
+                </span>
+            
+    </section>
+  </div>
+</div>
+  
     <% } %>
-    </table>
-            </div>
-        </div>
+    
 
-    </div>
+
 
 <%- include("../Views/template/footer")-%>
 </body>

@@ -1,23 +1,35 @@
 <html>
-  <%- include('../Views/template/header')-%>
-  <%- include('../Views/template/navbar')-%>
   <head>
-    <link href=../stylesheets/product-list.style.css rel=stylesheet type=text/css>
+    
+    <link rel=stylesheet type=text/css href=../css/bootstrap.min.css.css>
+    <link rel=stylesheet type=text/css href=../stylesheets/navbar.style.css>
+  <%- include('../Views/template/header.ejs')-%>
   </head>
 <body>
+
+  <div class="col-xs-18 col-md-10" style="align-content: center;">
         <table>
           <% for(var i=0; i < y.length; i++) { %>
              <tr>
 
-            <li class="nav-item">
-              <a id=<%= y[i].id %> class="nav-link" href="/categories/<%= y[i].id %>">         <%= y[i].name %></a>
-              </li>
 
-             <td><%= y[i].id %></td>
-             <td><%= y[i].name %></td>
-             <td><%= y[i]._id %></td>
-             <td><%= y[i].parent_category_id %></td>
              </tr>
+             <section class=product>
+            <img src=" /images/<%=y[i].image%>">
+           
+              <h3><%=y[i].name%></h3>
+              
+              <h4><%-y[i].page_title%></h4>
+              <p><%-y[i].page_description%></p>
+            
+              <li class="nav-item">
+                <a id=<%= y[i].id %>  class="nav-link" href="/categories/<%= y[i].id %>">         <%= y[i].name %></a>
+                </li>
+            
+          </section>
+
+
+             </div>
           <% } %>
           </table>
       </div>

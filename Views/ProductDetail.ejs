@@ -1,7 +1,11 @@
 <html>
 
-  <%- include('../Views/template/header')-%>
-  <%- include('../Views/template/navbar')-%>
+  <head>
+    
+    <link rel=stylesheet type=text/css href=../css/bootstrap.min.css>
+    <link rel=stylesheet type=text/css href=../stylesheets/style.css>
+  <%- include('../Views/template/header.ejs')-%>
+  </head>
 <body>
   <table>
     <% for(var i=0; i < x.length; i++) { %>
@@ -10,11 +14,17 @@
       <li class="nav-item">
         <a id=<%= x[i].id %> class="nav-link" href="/products/product_search<%= x[i].parent_category_id %>/<%= x[i].id %>"><%= x[i].name %></a>
         </li>
-
-       <td><%= x[i].id %></td>
-       <td><%= x[i].name %></td>
-       <td><%= x[i]._id %></td>
-       <td><%= x[i].primary_category_id %></td>
+        <h3><%=x[0].name%></h3>
+                <p><%-x[0].long_description%></p>
+                <span>
+                    <p>Price: <%=x[0].currency%> <%=x[0].price%></p>
+                    <span class='buy-now'><a>Buy now</a></span>
+                    <p></p>
+                </span>
+       <p><%= x[i].id %></p>  
+       <p><%= x[i]._id %></p>
+       <p><%= x[i].primary_category_id %></p>
+       <img src=" /images/<%=x[i].image_groups[i].images[i].link%>">
        </tr>
     <% } %>
     </table>

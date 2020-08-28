@@ -3,7 +3,7 @@ const routes = express.Router();
 const homeController = require('../Controller/HomeController');
 
 
-routes.get('/',homeController.getCAtegorytoHome);
+routes.get('/',homeController.searchForProducts);
 
 
 

@@ -11,21 +11,32 @@ function getCategorytohome(req,res,next)
 
 }
 
-function goToSigninPage() {
-    var xhttp = new XMLHttpRequest();
-    xhttp.open("GET", "http://localhost:3000/users", true);
-    xhttp.send();
-    xhttp.onreadystatechange = function() {
-        if(this.readyState == 4 && this.status == 200) {
-            document.getElementById("user-list").innerHTML = this.responseText;
-        }
+function searchForProducts(req,res,next)
+{
+  var request = require('request');
+    var options = {
+    'method': 'GET',
+    'url': 'https://osf-digital-backend-academy.herokuapp.com/api/products/product_search?secretKey=$2a$08$jKg/XbJqmQlVtqlYD8l.x.ZpUSvtQuYqrGT29KBRplVSH8w1dCFTC',
+    'headers': {
     }
+  };
+  request(options, function (error,response) {
+    if (error) throw new Error(error);
+   // console.log(response.body);
+   let temp = JSON.parse(response.body);
+   //console.log(temp.length);
+ 
+   res.render('Home.ejs', 
+   {
+     
+       x: temp
+      })
+  });
 }
-
-
 module.exports = {
   
-getCategorytohome : getCategorytohome
+    etCategorytohome : getCategorytohome,
+    searchForProducts:searchForProducts
    
 }
   
