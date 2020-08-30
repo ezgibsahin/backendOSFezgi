@@ -1,40 +1,67 @@
-<html>
 
-  <head>
+</html lang="en">
+<head>
+  <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+  <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <!------ Include the above in your HEAD tag ---------->
+</head>
+
+  <header>
+    <%- include('../Views/template/header.ejs')-%>
+  </header>
+
+  <main>
+    <div class="container">
+   
+      <div class="card">
+        <div class="row">
     
-    <link rel=stylesheet type=text/css href=../css/bootstrap.min.css>
-    <link rel=stylesheet type=text/css href=../stylesheets/style.css>
-  <%- include('../Views/template/header.ejs')-%>
-  </head>
-<body>
-  <table>
-    <% for(var i=0; i < x.length; i++) { %>
-       <tr>
-
-      <li class="nav-item">
-        <a id=<%= x[i].id %> class="nav-link" href="/products/product_search<%= x[i].parent_category_id %>/<%= x[i].id %>"><%= x[i].name %></a>
-        </li>
-        <h3><%=x[0].name%></h3>
-                <p><%-x[0].long_description%></p>
-                <span>
-                    <p>Price: <%=x[0].currency%> <%=x[0].price%></p>
-                    <span class='buy-now'><a>Buy now</a></span>
-                    <p></p>
-                </span>
-       <p><%= x[i].id %></p>  
-       <p><%= x[i]._id %></p>
-       <p><%= x[i].primary_category_id %></p>
-       <img src=" /images/<%=x[i].image_groups[i].images[i].link%>">
-       </tr>
-    <% } %>
-    </table>
-            </div>
-        </div>
-
-    </div>
-
-<%- include("../Views/template/footer")-%>
-</body>
+          <% for(var i=0; i < x.length; i++) { %>
+          <!---<a id=<%= x[i].id %> class="nav-link" href="/products/product_search<%= x[i].parent_category_id %>/<%= x[i].id %>"><%= x[i].name %></a>---->
+          <aside class="col-sm-5 border-right">
+                  <article class="gallery-wrap"> 
+                      <div class="img-big-wrap">
+                          <div> 
+                              <a href="#">
+                                <img src=" /images/<%=x[i].image_groups[i].images[i].link%>">
+                              </a>
+                          </div>
+                      </div> <!-- slider-product.// -->
+          
+                  </article> <!-- gallery-wrap .end// -->
+            </aside>
+          <aside class="col-sm-7">
+                  <article class="card-body p-5">
+                    <h3 class="title mb-3"><%=x[0].name%></h3>
+                 
+                      <p class="price-detail-wrap"> 
+                        <span class="price h3 text-warning"> 
+                          <span class="currency">Price: <%=x[0].currency%> <%=x[0].price%></span>
+                        </span> 
+                      </p> <!-- price-detail-wrap .// -->
+                      <dl class="item-property">
+                          <dt>Description</dt>
+                          <dd>
+                            <p><%-x[0].long_description%></p>
+                          </dd>
+                      </dl>
+                        <hr>
+                                <a href="#" class="btn btn-lg btn-primary text-uppercase"> Buy now </a>
+                                <a href="#" class="btn btn-lg btn-outline-primary text-uppercase"> <i class="fas fa-shopping-cart"></i> Add to cart </a>
+                                <a href="#" class="btn btn-lg btn-outline-primary text-uppercase"> <i class="fas fa-shopping-cart"></i> Add to Wishlist </a>
+        
+                      </article> <!-- card-body.// -->
+              </aside> <!-- col.// -->
+              <% } %>
+            </div> <!-- row.// -->
+          </div> <!-- card.// -->
+      </div>
+      <!--container.//-->
+  </main>
+  <footer>
+    <%- include("../Views/template/footer")-%>
+  </footer>
 
 
 </html>
