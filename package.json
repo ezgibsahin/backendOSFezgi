@@ -3,7 +3,12 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon app.js"
+    "start": "nodemon app.js",
+    "test": "jest"
+  },
+  "jest":
+  {
+    "testEnvironment" : "node"
   },
   "author": "",
   "license": "ISC",
@@ -16,6 +21,12 @@
     "nodemon": "^2.0.4",
     "request": "^2.88.2"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "jest": "^25.5.4",
+    "superagent": "^6.0.0",
+    "supertest": "^4.0.2"
+  },
   "description": ""
 }

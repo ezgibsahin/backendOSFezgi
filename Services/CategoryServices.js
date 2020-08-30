@@ -15,11 +15,20 @@ function getAllCategories(req,res,next)
       if (error) throw new Error(error); 
       let dataAllCategories = JSON.parse(response.body);
      // console.log(dataAllCategories);  
-      res.render('Categories.ejs',
+
+     try{
+        res.render('Categories.ejs',
           {
               y: dataAllCategories
-
+           
           })
+
+          res.status(200).send(dataAllCategories);
+    }catch(error)
+    {
+        res.render('Error.ejs');
+    }
+     
           //return response.body;
   });
 
@@ -47,8 +56,6 @@ function getCategoryById(req,res,next,id)
         console.log(inputId);
           for (let index = 0; index < dataAllCategories.length; index++) 
           {
-            //console.log(dataAllCategories[index].parent_category_id);
-            //console.log(inputId);
               if (dataAllCategories[index].parent_category_id == inputId )
               {
                   
@@ -61,23 +68,22 @@ function getCategoryById(req,res,next,id)
           console.log(inputId);
     
           if (mainCategoryArr === undefined || mainCategoryArr.length == 0) {
-            // array empty or does not exist
-            
-          //  products =  productController.pullproducts(req,res,inputId);
-          //  console.log(products);
            res.redirect('/products/'+inputId);
             }
     
-               
-         // console.log(dataAllCategories);  
-          res.render('Categories.ejs',
-              {
-                  y: mainCategoryArr,
-           
-              })
-              //return response.body;
-      });
+            try{
+                res.render('Categories.ejs',
+                {
+                    y: mainCategoryArr,
+             
+                })  
+                res.status(200).send(mainCategoryArr) ;
+            }catch(error)
+            {
+                res.render('Error.ejs');
+            }
 
+      });
 }
 
 async function getCategoryByParentId(req,res,next,id)
@@ -95,20 +101,17 @@ async function getCategoryByParentId(req,res,next,id)
 {
   
     if (error) throw new Error(error);
-    let dataCategoryByParentId = JSON.parse(response.body);
-    /*
-    let element =[] ;
-      for (let i = 0; i < dataCategoryByParentId.length; i++) 
-      {
-          if (dataCategoryByParentId[i].parent_category_id == inputParentId) 
-          {
-              element.push(dataCategoryByParentId[i]);
-          }
-          
-      }    */
-      res.render('Categories.ejs',{
-          y: dataCategoryByParentId
-      })
+    let dataCategoryByParentId = JSON.parse(response.body);    
+      try{
+        res.render('Categories.ejs',{
+            y: dataCategoryByParentId
+        })
+        res.status(200).send(dataCategoryByParentId);
+    }catch(error)
+    {
+        res.render('Error.ejs');
+    }
+     
 })
 }
 

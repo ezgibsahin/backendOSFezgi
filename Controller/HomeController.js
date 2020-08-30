@@ -9,8 +9,15 @@ function getHomePage(req, res) {
 
 async function searchForProducts(req,res)
 {
-    const returnFrımService = await homeServices.searchForProducts(req,res);
-    return returnFrımService;
+    try{
+        const returnFrımService = await homeServices.searchForProducts(req,res);
+        return returnFrımService;
+    }catch(error)
+    {
+        res.render('Error.ejs'); 
+
+    }
+    
 }
 
 
