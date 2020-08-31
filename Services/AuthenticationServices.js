@@ -1,7 +1,9 @@
 const { response } = require('express');
 
-
 /// token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmNDQwNjgwMmE1OWI4MDAyNDAwZWI1NSIsImlhdCI6MTU5ODI5MzYzMiwiZXhwIjoxNTk4MzgwMDMyfQ.i2tEDwXLs5pwygX3SXsckBqoUKHwlndqd1nt7MgJmsQ ccc ccc@
+
+
+//function for signing up
 function signup(req,res,name,email,password)
 {
   var inputName = req.params.name;
@@ -28,7 +30,7 @@ function signup(req,res,name,email,password)
     
 }
 
-
+//function for signing in
 function signin(req,res,email,password)
 {
   

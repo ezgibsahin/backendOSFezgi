@@ -1,54 +1,40 @@
 const productServices = require('../Services/ProductServices');
 
+//Function the return products from Product Service
 async function searchForProducts(req,res)
 {
-    try{
+ 
         const returnFromService = await productServices.searchForProducts(req,res);
         return returnFromService;
-    }catch(error)
-    {
-        res.render('Error.ejs'); 
-
-    }
    
 }
-
+//Function the return products by id from Product Service
 async function searchForProductsById(req,res,id)
 {
-    try{
+    
         const returnSearchById = await productServices.searchForProductsById(req,res,id);
         return returnSearchById;
-    }catch(error)
-    {
-        res.render('Error.ejs'); 
-
-    }
-    
+ 
 }
+//Function the return products by primary category id from Product Service
 
 async function searchForProductsByPrimaryCategoryId(req,res,id)
 {
-    try{
+    
         let returnPRoductId = await productServices.searchForProductsByPrimaryCategoryId(req,res,id);
         return returnPRoductId;
-    }catch(error)
-    {
-        res.render('Error.ejs'); 
-
-    }
+ 
     
 }
+
+//Function the return search results from Product Service
+
 async function searchForBar(req,res,id)
 {
-    try{
+   
         const returnSearchById = await productServices.searchForBar(req,res,id);
         return returnSearchById;
-    }catch(error)
-    {
-        res.render('Error.ejs'); 
-
-    }
-    
+   
 }
 module.exports = {
     searchForProducts: searchForProducts,

@@ -11,6 +11,8 @@ function getCategorytohome(req,res,next)
 
 }
 
+
+//function for displaying products on home page
 function searchForProducts(req,res,next)
 {
   var request = require('request');
@@ -22,13 +24,10 @@ function searchForProducts(req,res,next)
   };
   request(options, function (error,response) {
     if (error) throw new Error(error);
-   // console.log(response.body);
    let temp = JSON.parse(response.body);
-   //console.log(temp.length);
  
    res.render('Home.ejs', 
    {
-     
        x: temp
       })
   });

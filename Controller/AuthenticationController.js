@@ -1,5 +1,6 @@
 const authenticationServices = require('../Services/AuthenticationServices');
 
+//Function for the return signup info from Authentication Service
 
 async function signup(req, res,name,email,password) {
    try{
@@ -12,6 +13,8 @@ async function signup(req, res,name,email,password) {
     
 }
 
+
+//Function for the return signup info from Authentication Service
 async function signin(req, res,email,password) {
    try{
     const returnSignin = await authenticationServices.signin(req,res,email,password);

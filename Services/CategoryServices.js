@@ -2,6 +2,8 @@ const { response } = require('express');
 const ProductServices = require('./ProductServices');
 const productController = require('../Controller/ProductController');
 
+
+// Function for fetching all the categories.
 function getAllCategories(req,res,next)
 {
   var request = require('request');
@@ -14,30 +16,30 @@ function getAllCategories(req,res,next)
   request(options, function (error, response) {
       if (error) throw new Error(error); 
       let dataAllCategories = JSON.parse(response.body);
-     // console.log(dataAllCategories);  
-
+    //Rendering the Categories.ejs to display all categories
      try{
         res.render('Categories.ejs',
           {
               y: dataAllCategories
            
           })
-
+          //If no error send all categories
           res.status(200).send(dataAllCategories);
     }catch(error)
     {
+        //If error render Error.js
         res.render('Error.ejs');
     }
-     
-          //return response.body;
   });
 
 }
 
+
+// Function for fetching the categories according to one id.
 function getCategoryById(req,res,next,id)
 {
     var inputId = req.params.id;
-     // console.log(inputId);
+
       var request = require('request');
       var options = {
           'method': 'GET',
@@ -48,18 +50,19 @@ function getCategoryById(req,res,next,id)
       request(options, function (error, response) {
           if (error) throw new Error(error); 
           let dataAllCategories = JSON.parse(response.body);
-         // console.log(dataAllCategories)
-          let mainCategoryArr = [];
+         
+          
+          let mainCategoryArr = []; //Category array.
           let products;
           
-        var inputId = req.params.id;
-        console.log(inputId);
-          for (let index = 0; index < dataAllCategories.length; index++) 
+        var inputId = req.params.id; // Input Category Id.
+        //From all categories push the one/ones into the mainCategoryArr that matches the input id
+          for (let i = 0; i < dataAllCategories.length; i++) 
           {
-              if (dataAllCategories[index].parent_category_id == inputId )
+              if (dataAllCategories[i].parent_category_id == inputId )
               {
                   
-                  mainCategoryArr.push(dataAllCategories[index]);
+                  mainCategoryArr.push(dataAllCategories[i]);
               }
               
           }
@@ -67,29 +70,33 @@ function getCategoryById(req,res,next,id)
           var inputId = req.params.id;
           console.log(inputId);
     
+          //When mainCategoryArr is undefined or empty redirect to product page.
           if (mainCategoryArr === undefined || mainCategoryArr.length == 0) {
            res.redirect('/products/'+inputId);
             }
-    
+            //Rendering the Categories.ejs to display categories by id.
             try{
                 res.render('Categories.ejs',
                 {
                     y: mainCategoryArr,
              
                 })  
+                //If no error send category array
                 res.status(200).send(mainCategoryArr) ;
             }catch(error)
             {
+                //If error render Error.ejs
                 res.render('Error.ejs');
             }
 
       });
 }
 
+
+// Function for fetching the categories according to the parent id.
 async function getCategoryByParentId(req,res,next,id)
 {
-    var inputParentId = req.params.id;
-    console.log(inputParentId);
+    var inputParentId = req.params.id; //Request parent id
     var request = require('request');
     var options = {
     'method': 'GET',
@@ -102,13 +109,16 @@ async function getCategoryByParentId(req,res,next,id)
   
     if (error) throw new Error(error);
     let dataCategoryByParentId = JSON.parse(response.body);    
+     //Rendering the Categories.ejs to display categories by parent id.
       try{
         res.render('Categories.ejs',{
             y: dataCategoryByParentId
         })
+        //If no error send category by parent id
         res.status(200).send(dataCategoryByParentId);
     }catch(error)
     {
+        //If error render Error.ejs
         res.render('Error.ejs');
     }
      
