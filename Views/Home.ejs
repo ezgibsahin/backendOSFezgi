@@ -7,44 +7,37 @@
 </head>
 <div class="container">
   <div class="row">
-    <% for(var i=0; i < 15; i++) { %>
-      <div class="col-lg-6 col-md-6 mb-4">
-      <li class="nav-item">
-        <a class="nav-link" href=     "/products/<%= x[i].primary_category_id %>/<%= x[i].id %>"    >
-       
-          <img src=" /images/<%=x[i].image_groups[0].images[0].link%>">
-        </a>
-        </li>
+    <% for(var i=0; i < 20; i++) { %>
+      <div class="col-lg-6 col-md-6 mb-4" style=" margin-top: 40px;" style=" margin-left: 40px;"  >
+        <a class="nav-item">
+            <a class="nav-link" href=     "/products/<%= x[i].primary_category_id %>/<%= x[i].id %>"    >
+              <img src=" /images/<%=x[i].image_groups[0].images[0].link%>">
+            </a>
               <h3><%=x[i].name%></h3>
-              <li><%-x[i].short_description%></li>
+              <p><%-x[i].short_description%></>
+              
               <span>
                   <p>Price: <%=x[i].currency%> <%=x[0].price%></p>
-
-                  <span class='buy-now' style="font-size:16px" ><a>Buy now</a></span>
-                  <a > | </a>
-                  <span class='add-cart' style="font-size:16px"><a>Add to Cart</a></span>
-                  <a > | </a>
-                  <span class='add-wishlist' style="font-size:16px"><a>Wishlist</a></span>
+                  <a class style="font-size: larger; text-align:center; background-color: #965889; color: #fff; border-radius: 130px;" class="btn btn-md text-uppercase waves-effect waves-light" href= "/products/<%= x[i].primary_category_id %>/<%= x[i].id %>"    >  VIEW PRODUCT</a>
+                  <a href="#" class="btn btn-lg btn-outline-primary text-uppercase"> <i class="fas fa-shopping-cart"></i> Add to cart </a>
+                  <a href="#" class="btn btn-lg btn-outline-primary text-uppercase"> <i class="fas fa-shopping-cart"></i> Add to Wishlist </a>
                   
-                  <p></p>
               </span>
-            </div>
+
+            </a>
+          </a>
+        </a>
+      </div>
   <% } %>
 
   </div>
 </div>
    
-
-
-
-
-
 <script>
     window.onload = function() {
         document.getElementById('Home').classList.add('active');
       };
 </script>
-
 
 <footer >
   <%- include("../Views/template/footer")-%>

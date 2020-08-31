@@ -97,9 +97,45 @@ function searchForProductsByPrimaryCategoryId(req,res,id)
 })
 
 }*/
+function searchForBar(req,res,id)
+{
+  let sid = id.toLowerCase();
+  var request = require('request');
+    var options = {
+    'method': 'GET',
+    'url': 'https://osf-digital-backend-academy.herokuapp.com/api/products/product_search?secretKey=$2a$08$jKg/XbJqmQlVtqlYD8l.x.ZpUSvtQuYqrGT29KBRplVSH8w1dCFTC',
+    'headers': {
+    }
+  };
+  request(options, function (error,response) {
+    if (error) throw new Error(error);
+   let temp = JSON.parse(response.body);
+   let searchres =[];
+    for (let index = 0; index < temp.length; index++) {
+     
+      let str = temp[index].page_title.toLowerCase();
+      
+      let str1 = temp[index].page_description.toLowerCase();
+      
+      if (str.includes(sid)) {
+        searchres.push(temp[index])
+      } else {
+        if (str1.includes(sid)) {
+          searchres.push(temp[index])
+        }
+      }
+    
+    }
+   res.render('Products.ejs', 
+   {
+       x: searchres
+      })
+  });
+}
 
 module.exports = {
     searchForProducts: searchForProducts,
     searchForProductsById: searchForProductsById,
-    searchForProductsByPrimaryCategoryId: searchForProductsByPrimaryCategoryId
+    searchForProductsByPrimaryCategoryId: searchForProductsByPrimaryCategoryId,
+    searchForBar:searchForBar
 }

@@ -38,8 +38,21 @@ async function searchForProductsByPrimaryCategoryId(req,res,id)
     }
     
 }
+async function searchForBar(req,res,id)
+{
+    try{
+        const returnSearchById = await productServices.searchForBar(req,res,id);
+        return returnSearchById;
+    }catch(error)
+    {
+        res.render('Error.ejs'); 
+
+    }
+    
+}
 module.exports = {
     searchForProducts: searchForProducts,
     searchForProductsById: searchForProductsById,
-    searchForProductsByPrimaryCategoryId: searchForProductsByPrimaryCategoryId
+    searchForProductsByPrimaryCategoryId: searchForProductsByPrimaryCategoryId,
+    searchForBar:searchForBar
 }

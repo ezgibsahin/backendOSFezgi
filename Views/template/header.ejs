@@ -11,7 +11,7 @@
     </head>
 
     <body>
-        <nav class="navbar navbar-inverse">
+        <nav class="navbar navbar-inverse navbar-expand">
             <div class="container">
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -50,7 +50,11 @@
       <a id='cart' class="nav-link" href="/cart">CART</a>
     </li>
     <li class="form-group" style="padding-top: 7px;">
-      <input type="search" class="form-control" placeholder="Search">
+      
+    <form method="GET" action="/products/search/product-search/results"> 
+    <input class="form-control mr-sm-2 search" type="search" placeholder="Search" name="searchString" aria-label="Search">
+      
+  </form>
    </li>
                     </ul>
                 </div><!--/.nav-collapse -->

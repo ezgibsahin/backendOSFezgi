@@ -21,4 +21,10 @@ routes.get('/:primary_category_id/:id', function(req,res)
     productController.searchForProductsById(req,res,inputPrimaryId);
 })
 
+routes.get('/:d/:d/:d', function(req,res)
+{ 
+    console.log(req.query.searchString)
+    var search =req.query.searchString;
+    productController.searchForBar(req,res,search);
+})
 module.exports = routes;
