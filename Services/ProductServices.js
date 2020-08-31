@@ -106,7 +106,7 @@ request(options, function (error, response) {
 //Function for fetching products from search bar
 function searchForBar(req,res,id)
 {
-  let sid = id.toLowerCase();
+  let sid = id;
   var request = require('request');
     var options = {
     'method': 'GET',
